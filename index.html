@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy 1st Anniversary, Sayangku! 💖</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #fff5f7;
+            color: #333;
+            overflow-x: hidden;
+        }
+        h1, h2, h3 {
+            font-family: 'Pacifico', cursive;
+            font-weight: normal;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        section {
+            padding: 60px 0;
+        }
+        .btn {
+            display: inline-block;
+            background-color: #ff6b9d;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(255, 107, 157, 0.4);
+        }
+        .btn:hover {
+            background-color: #ff4785;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255, 107, 157, 0.6);
+        }
+        #opening {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(135deg, #ffcce6 0%, #ffb3d9 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        #opening h1 {
+            font-size: 3rem;
+            color: #d2317e;
+            margin-bottom: 20px;
+            opacity: 0;
+            animation: fadeIn 2s forwards 0.5s;
+        }
+        #opening p {
+            font-size: 1.2rem;
+            color: #7a2a58;
+            max-width: 600px;
+            margin: 0 auto 30px;
+            opacity: 0;
+            animation: fadeIn 2s forwards 1s;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .confetti, .heart {
+            position: absolute;
+            z-index: 1;
+        }
+        .heart {
+            color: #ff6b9d;
+            animation: falling linear infinite;
+        }
+        @keyframes falling {
+            0% {
+                top: -10%;
+                transform: translateX(0) rotate(0deg);
+            }
+            100% {
+                top: 100%;
+                transform: translateX(calc(var(--random-x) * 100px)) rotate(360deg);
+            }
+        }
+        #main-content {
+            display: none;
+        }
+        header {
+            background-color: #ff6b9d;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        header h1 {
+            font-size: 2rem;
+        }
+        #gallery {
+            background-color: #fff;
+        }
+        #gallery h2 {
+            text-align: center;
+            color: #d2317e;
+            margin-bottom: 40px;
+            font-size: 2.5rem;
+        }
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            aspect-ratio: 1/1;
+        }
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        .gallery-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(210, 49, 126, 0.8);
+            color: white;
+            padding: 15px;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+        .gallery-item:hover .gallery-caption {
+            transform: translateY(0);
+        }
+        #love-story {
+            background-color: #fff5f7;
+        }
+        #love-story h2 {
+            text-align: center;
+            color: #d2317e;
+            margin-bottom: 40px;
+            font-size: 2.5rem;
+        }
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px 0;
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            width: 2px;
+            background-color: #ff6b9d;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -1px;
+        }
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+            box-sizing: border-box;
+        }
+        .timeline-item:nth-child(odd) {
+            left: 0;
+        }
+        .timeline-item:nth-child(even) {
+            left: 50%;
+        }
+        .timeline-content {
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+        .timeline-content h3 {
+            color: #d2317e;
+            margin-bottom: 10px;
+            font-size: 1.5rem;
+        }
+        .timeline-date {
+            color: #ff6b9d;
+            font-weight: bold;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        .timeline-date::before {
+            content: '❤️';
+            margin-right: 8px;
+        }
+        .timeline-item:nth-child(odd) .timeline-date {
+            justify-content: flex-end;
+        }
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: #ff6b9d;
+            border-radius: 50%;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 1;
+        }
+        .timeline-item:nth-child(odd)::after {
+            right: -10px;
+        }
+        .timeline-item:nth-child(even)::after {
+            left: -10px;
+        }
+        #countdown {
+            background-color: #fff;
+            text-align: center;
+        }
+        #countdown h2 {
+            color: #d2317e;
+            margin-bottom: 20px;
+            font-size: 2.5rem;
+        }
+        #countdown p {
+            font-size: 1.2rem;
+            color: #7a2a58;
+            margin-bottom: 30px;
+        }
+        .countdown-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .countdown-box {
+            background-color: #ff6b9d;
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            min-width: 100px;
+            box-shadow: 0 5px 15px rgba(255, 107, 157, 0.4);
+        }
+        .countdown-value {
+            font-size: 2.5rem;
+            font-weight: bold;
+        }
+        .countdown-label {
+            font-size: 1rem;
+        }
+        #love-letter {
+            background-color: #fff5f7;
+            padding: 60px 0;
+        }
+        #love-letter h2 {
+            text-align: center;
+            color: #d2317e;
+            margin-bottom: 40px;
+            font-size: 2.5rem;
+        }
+        .letter-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            position: relative;
+            border: 1px solid #ffcce6;
+        }
+        .letter-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 10px;
+            background: linear-gradient(135deg, #ff6b9d 0%, #ffcce6 100%);
+            border-radius: 10px 10px 0 0;
+        }
+        .letter-content {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #555;
+        }
+        .signature {
+            font-family: 'Pacifico', cursive;
+            font-size: 1.5rem;
+            color: #d2317e;
+            margin-top: 30px;
+            text-align: right;
+        }
+        footer {
+            background-color: #ff6b9d;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+        }
+        footer p {
+            margin: 0;
+        }
+        @media (max-width: 768px) {
+            #opening h1 {
+                font-size: 2rem;
+            }
+            .timeline::before {
+                left: 31px;
+            }
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+            .timeline-item:nth-child(even) {
+                left: 0;
+            }
+            .timeline-item::after {
+                left: 21px !important;
+            }
+            .timeline-item:nth-child(odd) .timeline-date {
+                justify-content: flex-start;
+            }
+            .letter-container {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Opening Page -->
+    <section id="opening">
+        <h1 id="anniversary-text">Happy 1st Anniversary, Sayangku 💖</h1>
+        <p id="subtitle" style="opacity:0;transition:all 0.8s;">Satu tahun kebersamaan yang penuh cinta dan tawa bersamamu</p>
+        <button id="enter-btn" class="btn">Buka Surprise</button>
+        <!-- Hearts will be added by JavaScript -->
+    </section>
+    <!-- Main Content (hidden initially) -->
+    <div id="main-content">
+        <header>
+            <h1>Happy 1st Anniversary, <span id="partner-name">Sayangku</span>! 💖</h1>
+        </header>
+        <!-- Gallery Section -->
+        <section id="gallery">
+            <div class="container">
+                <h2>Kenangan Indah Kita</h2>
+                <div class="gallery-grid">
+                    <div class="gallery-item">
+                        <img src="https://i.imgur.com/bHfu6Ya.png" alt="Our Photo 1">
+                        <div class="gallery-caption">Pertemuan pertama kita ❤️</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://i.imgur.com/bmK1Izw.png" alt="Our Photo 2">
+                        <div class="gallery-caption">makan sore & unboxing 🍽️</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://i.imgur.com/v1IsHs8.png" alt="Our Photo 3">
+                        <div class="gallery-caption">menit menit sebelum ketinggalan kereta ygy</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://i.imgur.com/ymeZ8Kn.jpeg" alt="Our Photo 4">
+                        <div class="gallery-caption">foto terbaik ygy (km nyender)</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://i.imgur.com/wIdAlK8.png" alt="Our Photo 5">
+                        <div class="gallery-caption">poto ini juga bagus ygy</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Love Story Section -->
+        <section id="love-story">
+            <div class="container">
+                <h2>Cerita Cinta Kita</h2>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <div class="timeline-date">19 Juni 2024</div>
+                            <h3>Hari Pertama Kita</h3>
+                            <p>hari pertama pacaran, abis ngungkapin rasa salting berat weila, langsung off gitu loh ya</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <div class="timeline-date">4 januari 2025</div>
+                            <h3>Kencan Pertama</h3>
+                            <p>kita pergi bareng, mam eskrim, trus kita photobox TAPIII PHOTOBOXNYA JATOH 2 AKUNYA GANYADAR, ABISTU PAS BALIK AKU KEYINGGALAN KERETA</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <div class="timeline-date">29 mei 2025</div>
+                            <h3>ketemuan keduwa kalinya</h3>
+                            <p>ga espek bgt, dijemput se keluarga, bayangin ak bahkan tidak kwuat utk menutup pintu🥹</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <div class="timeline-date">30 mei 2025</div>
+                            <h3>ketemuan ketiga</h3>
+                            <p>kita jalan jalan ke kampung batik, tapi ga ada apa apa bejir disana</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <div class="timeline-date">19 Juni 2025</div>
+                            <h3>1 Tahun Bersama</h3>
+                            <p>Happy 1st Anniversary, kesayanganku yang paling gemesin~ Makasih udah jadi partner mabar, partner rebahan, partner halu masa depan 🤭✨ Let’s keep being childish together forever!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Countdown Section -->
+        <section id="countdown">
+            <div class="container">
+                <h2>Menuju Anniversary ke-2</h2>
+                <p>Hitungan mundur menuju hari istimewa berikutnya bersama</p>
+                <div class="countdown-container">
+                    <div class="countdown-box">
+                        <div id="days" class="countdown-value">00</div>
+                        <div class="countdown-label">Hari</div>
+                    </div>
+                    <div class="countdown-box">
+                        <div id="hours" class="countdown-value">00</div>
+                        <div class="countdown-label">Jam</div>
+                    </div>
+                    <div class="countdown-box">
+                        <div id="minutes" class="countdown-value">00</div>
+                        <div class="countdown-label">Menit</div>
+                    </div>
+                    <div class="countdown-box">
+                        <div id="seconds" class="countdown-value">00</div>
+                        <div class="countdown-label">Detik</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Love Letter Section -->
+        <section id="love-letter">
+            <div class="container">
+                <h2>Surat Cinta Untukmu</h2>
+                <div class="letter-container">
+                    <div id="letter-content" class="letter-content"></div>
+                    <div class="signature">- <span id="your-name">Aku</span></div>
+                </div>
+            </div>
+        </section>
+        <footer>
+            <p>Dibuat dengan ❤️ untuk merayakan 1 tahun kebersamaan kita | © 2026</p>
+        </footer>
+    </div>
+    <!-- Audio for background music -->
+    <audio id="bg-music" loop>
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+    </audio>
+    <script>
+        // Set nama pasangan dan nama kamu
+        document.getElementById('partner-name').textContent = 'Sayangku';
+        document.getElementById('your-name').textContent = 'Aku';
+
+        // Create falling hearts
+        function createHearts() {
+            const openingSection = document.getElementById('opening');
+            for (let i = 0; i < 20; i++) {
+                const heart = document.createElement('div');
+                heart.classList.add('heart');
+                heart.innerHTML = '❤️';
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.fontSize = (Math.random() * 20 + 10) + 'px';
+                heart.style.setProperty('--random-x', Math.random() * 2 - 1);
+                heart.style.animationDuration = (Math.random() * 5 + 5) + 's';
+                heart.style.animationDelay = (Math.random() * 5) + 's';
+                openingSection.appendChild(heart);
+            }
+        }
+
+        // Typewriter effect for love letter
+        function typeWriter(text, element, speed, callback) {
+            let i = 0;
+            element.innerHTML = '';
+            function typing() {
+                if (i < text.length) {
+                    if (text.charAt(i) === "\n") {
+                        element.innerHTML += '<br>';
+                    } else {
+                        element.innerHTML += text.charAt(i);
+                    }
+                    i++;
+                    setTimeout(typing, speed);
+                } else if (callback) {
+                    callback();
+                }
+            }
+            typing();
+        }
+
+        // Countdown to next anniversary
+        let countdownInterval = null;
+        function updateCountdown() {
+            // Tanggal anniversary ke-2
+            const nextAnniversary = new Date('June 19, 2026 00:00:00').getTime();
+            const now = new Date().getTime();
+            const distance = nextAnniversary - now;
+            let days = 0, hours = 0, minutes = 0, seconds = 0;
+            if (distance > 0) {
+                days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            }
+            document.getElementById('days').textContent = days.toString().padStart(2, '0');
+            document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+            document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+            document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+        }
+
+        document.getElementById('enter-btn').addEventListener('click', function() {
+            document.getElementById('bg-music').play();
+            document.getElementById('opening').style.display = 'none';
+            document.getElementById('main-content').style.display = 'block';
+            window.scrollTo(0, 0);
+            // START interval countdown di sini!
+            updateCountdown();
+            if (countdownInterval) clearInterval(countdownInterval);
+            countdownInterval = setInterval(updateCountdown, 1000);
+
+            const letterText = `haiii Deoku yang paling gemesin dan manja 🩷🐰,
+
+hari iniii… kita genap 1 tahun pacaran oemjiii
+aku masih nggak nyangka bisa punya cewek seimut, seunik, dan seberisik kamu (eh peace 🤭✌️).
+tapii sumpah, hidup aku jauh lebih berwarna sejak kamu datang.
+
+Deoo, kamu tuh kayak bubble tea rasa stroberi: manis, bikin nagih, dan kadang nyeplos nggak jelas tapi aku tetep sayang 🤣💖
+selama 365 hari ini, kita udah banyak ngalamin hal bareng dari yang receh, sampai yang bikin nangis. tapi semuanya selalu terasa istimewa karena ada kamu.
+
+aku tahu aku belum sempurna…
+Kadang cuek, kadang terlalu dingin kayak AC 16 derajat nyehehe
+tapi aku selalu berusaha, De…
+berusaha buat jadi cowok yang kamu banggain, cowok yang kamu bisa andelin, dan cowok yang cuma lihat kamu… satu-satunya 💘
+
+makasih yaaaa, udah sabar sama aku.
+udah mau nemenin hari hari aku walau kita jauh, walau LDR itu kadang nyebelin banget. Tapi kamu kuat, dan aku bangga banget sama kamu 😭✨
+
+Happy 1st Anniversary, Deo!
+Aku sayang kamu… banget.
+Dan aku mau kita terus bareng-bareng, ngelewatin tahun kedua, ketiga, sampe nanti kita tua, pegang tangan satu sama lain sambil ngeteh di teras rumah kecil kita 😭🏡🫶
+
+I Love you always,`;
+            typeWriter(letterText, document.getElementById('letter-content'), 30);
+        });
+
+        window.onload = function() {
+            createHearts();
+            // Type the anniversary text
+            typeWriter("Happy 1st Anniversary, Sayangku 💖", document.getElementById('anniversary-text'), 100, function() {
+                document.getElementById('subtitle').style.opacity = 1;
+                document.getElementById('subtitle').style.transform = 'translateY(0)';
+            });
+        };
+    </script>
+</body>
+</html>
